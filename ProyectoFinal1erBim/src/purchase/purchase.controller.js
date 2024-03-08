@@ -130,5 +130,21 @@ export const topProductos = async(req, res)=>{
   }
 }
 
+//No se deberia de usar pero es mejor eliminar y volver a crear una antes
+// de actualizar datos de una existente
+export const deletePurchase = async (req, res)=>{
+  try {
+      //capturamos el id
+      let { id } = req.params
+      //Eliminar
+      let deletePurchase = await Purchase.findOneAndUpdate({_id: id})
+      //verificar
+      if(!deletePurchase) return res.status(404).send({message: 'Error and its illegal'})
+      return res.send({message: `Its illegal bro`})
+    } catch (error) {
+      console.error(error)
+      return res.status(500).send({message: 'Error deleting account'})
+  }
+}
 
 

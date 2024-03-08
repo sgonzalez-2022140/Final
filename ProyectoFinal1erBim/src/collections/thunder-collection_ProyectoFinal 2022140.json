@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "ProyectoFinal 2022140",
-    "dateExported": "2024-03-08T17:30:04.669Z",
+    "dateExported": "2024-03-08T17:51:39.885Z",
     "version": "1.1",
     "folders": [
         {
@@ -740,6 +740,25 @@
                 {
                     "name": "Authorization",
                     "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWViMGY2M2U5MGFiZDI0MTdjMmYzYzEiLCJ1c2VybmFtZSI6InBhcm1hcyIsIm5hbWUiOiJQZWRybyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTcwOTkxODczNSwiZXhwIjoxNzA5OTI5NTM1fQ.xwQOvAHv80DxSNShiqTaiTNsTkwDou4s2-hYhiUWInk"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "323ebddc-76cc-490a-b550-814efaad45f6",
+            "colId": "d277ebcf-a060-485c-91e9-12da576fc26a",
+            "containerId": "78ad58fb-1a03-493d-a571-25658a7caf37",
+            "name": "Delete a PURCHASE (NOOO)",
+            "url": "/deletePurchase/",
+            "method": "DELETE",
+            "sortNum": 280000,
+            "created": "2024-03-08T17:49:47.240Z",
+            "modified": "2024-03-08T17:51:07.145Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": ""
                 }
             ],
             "params": [],

@@ -70,6 +70,7 @@ export const search = async(req, res)=>{
     }
 }
 
+
 export const getInventary = async(req, res)=>{        
     try{
         let products = await Product.find().populate('categories'); 
