@@ -13,6 +13,6 @@ api.post('/purchaseAdd', [validateJwt, isClient], purchaseAdd)
 api.put('/purchaseConfirmed/:id', [validateJwt, isClient], purchaseConfirmed)
 
 
-api.get('/getPurchases', [validateJwt, isAdmin], getPurchases)
+api.get('/getPurchases', [validateJwt, isClient], getPurchases)
 
 export default api

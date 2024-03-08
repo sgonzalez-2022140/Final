@@ -101,6 +101,14 @@ export const getAProduct = async(req, res) => {
         res.status(500).send({ message: 'Internal server error' });
     }
 };
+/*
+export const topProductos = async(req, res)=>{
+    try {
+        let product = await Product.find().sort({})
+    } catch (error) {
+        
+    }
+}*/
 
 // //////////////////////////////////////////////////////////////////////////////////////////
 // ---------------------------- Actualizar información del producto -------------------------

@@ -46,10 +46,15 @@ export const registClient = async(req, res)=>{
 
 export const login = async(req, res)=>{
     try{
-        //Capturar los datos (body)
-        let { username, password } = req.body
-        //Validar que el usuario exista
-        let user = await User.findOne({username}) //buscar un solo registro
+        let { account , password } = req.body
+
+        // Validar que exista por medio de variable de account
+        let user = await User.findOne({
+            $or: [
+                { username: account },
+                { email: account }
+            ]
+        })
         //Verifico que la contraseña coincida
         if(user && await checkPassword(password, user.password)){
             let loggedUser = {
@@ -112,5 +117,30 @@ export const updateUser = async(req, res)=>{
         return res.send({message: 'Updated user', updatedUser})
     }catch(err){
         console.error(err)
+    }
+}
+
+export const userDefect = async(req, res) =>{
+    try{
+        const userExists = await User.findOne({username: 'admin'})
+        if(userExists){
+            console.log('Se creo usuario')
+        }else{
+            const encryptPassword = await encrypt('Guatemala')
+            const newUser = new User({
+                name: 'administrador',
+                lastName: 'general',
+                username: 'administrador',
+                password: encryptPassword,
+                email: 'eladmin@gmail.com',
+                phone: '11225544',
+                role: 'ADMIN'
+
+            })
+            await newUser.save()
+        }
+    }catch(err){
+        console.error('Admin already exists')
+        
     }
 }

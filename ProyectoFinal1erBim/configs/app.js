@@ -3,7 +3,6 @@
 //importamos express y sus confs
 import express from 'express'
 import { config } from "dotenv"
-import easyinvoice from 'easyinvoice'
 import cors from 'cors'
 
 //exportamos métodos
@@ -11,6 +10,7 @@ import categoryRoutes from "../src/category/category.routes.js"
 import productRotes from "../src/products/product.routes.js"
 import userRoutes from '../src/user/user.routes.js'
 import purchaseRoutes from '../src/purchase/purchase.routes.js'
+import billRoutes from '../src/bill/bill.routes.js'
 
 //express confs
 const app = express()
@@ -28,6 +28,7 @@ app.use(categoryRoutes)
 app.use('/product', productRotes)
 app.use(userRoutes)
 app.use(purchaseRoutes)
+app.use('/asd',billRoutes)
 
 export const initServer = ()=>{
     app.listen(port)
