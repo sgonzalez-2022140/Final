@@ -61,8 +61,11 @@ export const search = async(req, res)=>{
     try{
         let { name } = req.body
         console.log(name)
-        let product = await Product.find({name: name})
-        if(!product) return res.status(404).send({message: 'Product not found'})
+        if(!name) return res.status(400).send({ message:'Please write'})
+        let product = await Product.find({ name: { $regex: new RegExp(name, 'i') } });
+
+        if (!product || product.length === 0) return res.status(404).send({ message: 'Product not found' });
+
         return res.send({message: 'Product found !!!', product})
     }catch(err){
         console.error(err)
