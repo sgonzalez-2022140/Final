@@ -106,5 +106,29 @@ export const getPurchases = async(req, res)=>{
     }
 }
 
+export const topProductos = async(req, res)=>{
+  try {
+    const topProducts = await Purchase.aggregate([
+      // Filtro para obtener solo las compras completadas
+      { $match: { status: 'COMPLETED' } },
+      // Agrupar las compras por el producto
+      { $group: { _id: '$product', totalAmount: { $sum: '$amount' } } },
+      // Ordenar los productos según la cantidad vendida
+      { $sort: { totalAmount: -1 } }
+    ]);
+
+    // Mapear los resultados para obtener solo los IDs de los productos
+    const productIds = topProducts.map(product => product._id);
+
+    // Buscar los detalles de los productos según los IDs obtenidos
+    const products = await Product.find({ _id: { $in: productIds } });
+
+    res.status(200).json(products);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error al obtener los productos principales.' });
+  }
+}
+
 
 
