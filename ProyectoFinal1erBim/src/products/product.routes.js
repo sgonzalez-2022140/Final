@@ -24,7 +24,7 @@ api.get('/viewProductbyCategory/:id', viewProductbyCategory)
 
 //POST
 //Buscar por nombre
-api.post('/search', search)
+api.post('/search',[validateJwt, isClient], search)
 //Agregar productos
 api.post('/addProduct',[validateJwt, isAdmin], addProduct)
 

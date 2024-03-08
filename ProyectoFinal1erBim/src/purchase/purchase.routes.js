@@ -16,7 +16,7 @@ api.delete('/deletePurchase/:id', [validateJwt, isAdmin], deletePurchase)
 
 api.put('/purchaseConfirmed/:id', [validateJwt, isClient], purchaseConfirmed)
 
-api.get('/topProductos', [validateJwt, isAdmin], topProductos)
+api.get('/topProductos', [validateJwt, isClient], topProductos)
 api.get('/getPurchases', [validateJwt, isClient], getPurchases)
 
 export default api
